@@ -94,7 +94,7 @@ class LinkedList{
         return true;
     }
     remove(index) {
-        if(index < 0 || index > this.length) return false;
+        if(index < 0 || index > this.length) return undefined;
         if(index == 0) return this.shift();
         if(index >= this.length) return this.pop();
         const before = this.get(index - 1);
@@ -104,6 +104,20 @@ class LinkedList{
         temp.next = null;
         this.length--;
         return temp;
+    }
+    reverse() {
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+        let prev = null;
+        let next = temp.next;
+        for(let i=0;i <this.length;i++) {
+            next = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = next;
+        }
+        return this;
     }
 }
 
@@ -136,3 +150,5 @@ console.log(myLinkedList);
 console.log("----- Remove at 1 -----");
 myLinkedList.remove(1)
 console.log(myLinkedList);
+console.log("----- Reverse -----");
+console.log(myLinkedList.reverse());
