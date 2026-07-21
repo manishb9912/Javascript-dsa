@@ -66,6 +66,22 @@ class LinkedList{
         }
         return temp;
     }
+    get(index) {
+        if(index < 0 || index >= this.length) return undefined;
+        let temp = this.head;
+        for(let i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        return temp;
+    }
+    set(index, value) {
+        let temp = this.get(index);
+        if(temp) {
+            temp.value = value;
+            return true;
+        }
+        return false;
+    }
 }
 
 const myLinkedList = new LinkedList(10);
@@ -84,10 +100,10 @@ console.log(myLinkedList);
 console.log("----- Shift -----");
 myLinkedList.shift()
 console.log(myLinkedList);
-console.log("----------------");
-myLinkedList.shift()
+console.log("----- Get method -----");
+myLinkedList.get(2)
+console.log(myLinkedList.get(1));
 console.log(myLinkedList);
-console.log("----------------");
-myLinkedList.shift()
+console.log("----- Set method -----");
+myLinkedList.set(1, 5)
 console.log(myLinkedList);
-console.log("----------------");
