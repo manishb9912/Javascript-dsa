@@ -43,15 +43,51 @@ class LinkedList{
         }
         return temp;
     }
+    unshift(value) {
+        const newNode = new Node(value);
+        if(!this.head) {
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+        return this;
+    }
+    shift() {
+        if(!this.head) return undefined;
+        let temp = this.head;
+        this.head = this.head.next;
+        temp.next = null;
+        this.length--;
+        if(this.length == 0) {
+            this.tail = null;
+        }
+        return temp;
+    }
 }
 
 const myLinkedList = new LinkedList(10);
-myLinkedList.push(4);
+console.log("----- Linked List -----");
 console.log(myLinkedList);
-console.log("----------------");
+console.log("----- Push 7,9 -----");
+myLinkedList.push(7);
+myLinkedList.push(9);
+console.log(myLinkedList);
+console.log("----- Pop -----");
 myLinkedList.pop()
 console.log(myLinkedList);
+console.log("----- Unshift 4 -----");
+myLinkedList.unshift(4)
+console.log(myLinkedList);
+console.log("----- Shift -----");
+myLinkedList.shift()
+console.log(myLinkedList);
 console.log("----------------");
-myLinkedList.pop()
+myLinkedList.shift()
+console.log(myLinkedList);
+console.log("----------------");
+myLinkedList.shift()
 console.log(myLinkedList);
 console.log("----------------");
