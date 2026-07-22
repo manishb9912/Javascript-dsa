@@ -40,5 +40,6 @@ Topic/
 - Follow JavaScript best practices
 - Optimize time and space complexity where possible
 - Add comments when necessary for better understanding
+- Solve leet code problems
 
 Happy Coding! 🚀
