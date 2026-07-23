@@ -24,15 +24,6 @@ The goal is to practice problem-solving while following clean coding principles 
 - Two Pointers
 - Binary Search
 
-## Repository Structure
-
-```
-Topic/
-├── Problem1.js
-├── Problem2.js
-└── ...
-```
-
 ## Coding Principles
 
 - Write clean and readable code
