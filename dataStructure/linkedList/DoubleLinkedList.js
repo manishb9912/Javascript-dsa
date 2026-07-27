@@ -12,4 +12,8 @@ class DoublyLinkedList{
         this.tail = newNode;
         this.length = 1;
     }
+
+    push(){
+        // add logic for push
+    }
 }
