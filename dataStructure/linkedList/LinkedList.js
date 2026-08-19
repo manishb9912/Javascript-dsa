@@ -48,16 +48,16 @@ class LinkedList{
     }
 
     get(index) {
-        if(index < 0 || index >= this.length) return undefined;
+        if (index < 0 || index >= this.length) return undefined;
         let temp = this.head;
-        for(let i=0;i < index;i++) {
-            temp=temp.next;
+        for (let i = 0; i < index; i++) {
+            temp = temp.next;
         }
         return temp;
     }
 
     set(index, value) {
-       let temp = get(index);
+       let temp = this.get(index);
        if(temp) {
             temp.value = value;
             return true;
@@ -123,12 +123,23 @@ class LinkedList{
     }
 }
 
-const myLinkedList = new LinkedList(10);
-myLinkedList.push(5);
-myLinkedList.push(8);
-myLinkedList.unshift(4);
-myLinkedList.print();
-myLinkedList.getHead();
-myLinkedList.getTail();
-console.log(myLinkedList.get(2).value);
-console.log(myLinkedList.get(-1).value);
+function test() {
+    let myLinkedList = new LinkedList(1);
+    myLinkedList.push(2);
+    myLinkedList.push(3);
+    myLinkedList.push(4);
+
+    myLinkedList.print();
+    console.log("Get index 2: value ", myLinkedList.get(2).value);
+    console.log("Set 8 at index 2: ", myLinkedList.set(2, 8));
+    // console.log("LL before reverse():");
+    myLinkedList.print();
+
+    //myLinkedList.reverse();
+
+    // console.log("\nLL after reverse():");
+    // myLinkedList.print();
+}
+
+
+test();
