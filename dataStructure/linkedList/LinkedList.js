@@ -121,6 +121,47 @@ class LinkedList{
         temp.next = null;
         return temp;
     }
+
+    insert(index, value) {
+        if(index < 0 || index > this.length) return false;
+        if(index === this.length) return this.push(value);
+        if(index === 0) return this.unshift(value);
+        const newNode = new Node(value);
+        const temp = this.get(index - 1);
+        newNode.next = temp.next;
+        temp.next = newNode;
+        this.length++;
+        return true;
+    }
+
+    remove(index) {
+        if(index < 0 || index > this.length) return undefined;
+        if(index === this.length - 1) return this.pop();
+        if(index === 0) return this.shift();
+
+        const before = this.get(index - 1);
+        const temp = this.get(index);
+
+        before.next = temp.next;
+        temp.next = null;
+        this.length--;
+        return temp;
+    }
+
+    reverse() {
+        let temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
+        let next = temp.next;
+        let prev = null;
+        for(let i=0;i<this.length;i++) {
+            next = temp.next;
+            temp.next = prev;
+            prev = temp;
+            temp = next;
+        }
+        return this;
+    }
 }
 
 function test() {
@@ -134,11 +175,13 @@ function test() {
     console.log("Set 8 at index 2: ", myLinkedList.set(2, 8));
     // console.log("LL before reverse():");
     myLinkedList.print();
-
+    console.log("Insert 10 at index 4: ", myLinkedList.insert(4, 10));
+    console.log(myLinkedList.remove(4))
     //myLinkedList.reverse();
 
     // console.log("\nLL after reverse():");
-    // myLinkedList.print();
+    myLinkedList.print();
+    console.log(myLinkedList.reverse())
 }
 
 
