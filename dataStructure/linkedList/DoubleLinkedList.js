@@ -13,7 +13,11 @@ class DoublyLinkedList{
         this.length = 1;
     }
 
-    push(){
-        // add logic for push
+    printList() {
+        let temp = this.head;
+        while(temp) {
+            console.log(temp.value);
+            temp = temp.next;
+        }
     }
 }
