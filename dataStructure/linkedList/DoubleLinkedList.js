@@ -11,7 +11,7 @@ class DoubleLinkedList {
         const newNode = new Node(value);
         this.head = newNode;
         this.tail = newNode;
-        this.lengtjh = 1;
+        this.length = 1;
     }
 
     printList() {
@@ -20,6 +20,31 @@ class DoubleLinkedList {
             console.log(temp.value);
             temp = temp.next;
         }
+    }
+
+    get(index) {
+        if(index < 0 || index >= this.length) return undefined;
+        let temp = this.head;
+        if(index < this.length/2) {
+            for(let i = 0; i < index ; i++) {
+                temp = temp.next;
+            }
+        } else {
+            temp = this.tail;
+            for(let i = this.length - 1; i > index ; i--) {
+                temp = temp.prev;
+            }
+        }
+        return temp;
+    }
+
+    set(index, value) {
+        let temp = this.get(index);
+        if(temp) {
+            temp.value = value;
+            return true;
+        }
+        return false;
     }
 
     push(value) {
@@ -81,10 +106,10 @@ class DoubleLinkedList {
     }
 }
 
-const myDoubleLinkedlist = new DoubleLinkedList(7);
+const myDoubleLinkedlist = new DoubleLinkedList(1);
+myDoubleLinkedlist.push(2);
+myDoubleLinkedlist.push(3);
 myDoubleLinkedlist.push(4);
-myDoubleLinkedlist.push(5);
-myDoubleLinkedlist.push(8);
-myDoubleLinkedlist.pop();
-myDoubleLinkedlist.unshift(10);
+console.log(myDoubleLinkedlist.printList());
+myDoubleLinkedlist.set(0, 8);
 console.log(myDoubleLinkedlist.printList());
